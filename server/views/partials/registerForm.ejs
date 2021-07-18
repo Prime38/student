@@ -1,0 +1,25 @@
+<form method="POST" action="/users/register" autocomplete="off">
+    <fieldset class="form-group">
+        <label for="username">Username: </label>
+        <input type="text" class="form-control"
+        name="username" placeholder="username"
+        id="username" required autofocus>
+    </fieldset>
+
+    <fieldset class="form-group">
+        <label for="password">Password: </label>
+        <input type="password" class="form-control"
+        name="password" placeholder="password"
+        id="password" required>
+        <!-- or
+        <a href="/register">Register Here</a> -->
+    </fieldset>
+
+    <fieldset class="form-group text-right">
+        <input type="submit" class="btn btn-success" value="Submit">
+        <a href="/" >
+            <input type="button" class="btn btn-warning" value="Cancel">
+        </a>
+    </fieldset>
+
+</form>
