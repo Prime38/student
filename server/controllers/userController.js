@@ -7,38 +7,7 @@ let mongoose = require('mongoose');
 // create a reference to the model
 let userModel = require('../models/user');
 let User = userModel.User;
-
-
-module.exports.displayLoginPage = (req, res, next) => {
-    if(!req.user)
-    {
-        res.render('user-login',
-        {
-            title: "Login",
-            messages: req.flash('loginMessage'),
-            displayName: req.user ? req.user.displayName: ''
-        });
-    }
-    else
-    {
-        res.redirect('/');
-    }
-}
-
-module.exports.displayRegisterPage = (req, res, next) => {
-    
-    if(!req.user)
-    {
-        res.render('register',
-        {
-        });
-    }
-    else
-    {
-        //if the user already exists
-        return res.redirect('/');
-    }
-}
+let sha256=require('sha256')
 
 module.exports.processRegisterPage = (req, res, next) => {
 
@@ -48,24 +17,16 @@ module.exports.processRegisterPage = (req, res, next) => {
 
     let newUser = User({
         "username": req.body.username,
-        "password": req.body.password
+        "password": sha256(req.body.password)
     });
     User.create(newUser, (err, user)=>{
-        if(err)
-        {
+        if(err){
             console.log(err);
             res.send(err);
-        }
-        else
-        {
-            // refresh the list
-            console.log(user);
-
-            res.redirect('/');
+        } else{
+            res.render('index',{user:user});
         }
     })
-
-
 }
 
 
@@ -73,6 +34,18 @@ module.exports.processLoginPage = (req, res, next) => {
     console.log('recieved the request....');
     console.log(req.body.username);
     console.log(req.body.password);
+
+    let newUser = {
+        "username": req.body.username
+    }
+    User.findOne(newUser, (err, user)=>{
+        if(err){
+            console.log(err);
+            res.send(err);
+        } else{
+            res.render('index',{user:user});
+        }
+    })
 
     
 
