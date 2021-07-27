@@ -17,14 +17,38 @@ module.exports.processRegisterPage = (req, res, next) => {
 
     let newUser = User({
         "username": req.body.username,
-        "password": sha256(req.body.password)
+        "password": sha256(req.body.password),
+        "email":req.body.email,
+        "phone":req.body.phone
     });
     User.create(newUser, (err, user)=>{
         if(err){
             console.log(err);
             res.send(err);
         } else{
-            res.render('index',{user:user});
+            console.log(user);
+            res.render('account',{user:user});
+        }
+    })
+}
+module.exports.updateUserInfo = (req, res, next) => {
+    console.log('recieved the request....');
+    console.log(req.body.username);
+    console.log(req.body.password);
+
+    let newUser = {
+        "username": req.body.username,
+        "email":req.body.email,
+        "phone":req.body.phone
+    }
+    
+    User.update(newUser, (err, user)=>{
+        if(err){
+            console.log(err);
+            res.send(err);
+        } else{
+            console.log(user);
+            res.render('account',{user:user});
         }
     })
 }
@@ -43,13 +67,12 @@ module.exports.processLoginPage = (req, res, next) => {
             console.log(err);
             res.send(err);
         } else{
-            res.render('index',{user:user});
+            console.log(user);
+            res.render('account',{user:user});
         }
     })
-
-    
-
 }
+
 
 
 module.exports.performLogout = (req, res, next) => {
