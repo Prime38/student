@@ -9,17 +9,10 @@
 	<script src="accountInformation.js"></script>
 	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="accountInformation.css" rel="stylesheet">
+    <link href="../../public/stylesheets/accountInformation.css" rel="stylesheet">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
 </head>
-
-<div class="topnav">
-    <a href="homeScreen.html">Home</a>
-  <a class="active" href="accountInformation.html">Profile</a>
-  <a href="checklist.html">Checklist</a>
-  <a href="calender.html">Calender</a>
-  <a href="grader.html">Grader</a>
-</div>
+<% include ./partials/nav.ejs %>
 <div class="container">
     <div class="row gutters">
         <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
@@ -30,15 +23,15 @@
                             <div class="user-avatar">
                                 <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Maxwell Admin">
                             </div>
-                            <% if(user!=null) {%>
-                            <h5 id="h_name" class="user-name"><%= user.username %></h5>
-                            <h6 id="h_email" class="user-email"><%= user.email %></h6>
-                            <h6 id="h_phone" class="user-email"><%= user.phone %></h6>
+                            <% if(cookies.user!=null) {%>
+                            <h5 id="h_name" class="user-name"><%= cookies.user.username %></h5>
+                            <h6 id="h_email" class="user-email"><%= cookies.user.email %></h6>
+                            <h6 id="h_phone" class="user-email"><%= cookies.user.phone %></h6>
                             
                         </div>
                         <div class="about">
                             <h5>About</h5>
-                            <p>My name is <%= user.username %>. I am CS student and Front end developer/</p>
+                            <p>My name is <%= cookies.user.username %>. I am CS student and Front end developer/</p>
                             <% } %>
                         </div>
                     </div>
@@ -52,22 +45,23 @@
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <g6 class="mb-2 text-primary">Personal Information</g6>
                         </div>
+                        
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                             <div class="form-group">
                                 <label for="fullName">Full Name</label>
-                                <input type="text" class="form-control" id="fullName" placeholder="Enter full name">
+                                <input type="text" class="form-control" id="fullName" placeholder="<%= cookies.user.username %>">
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                             <div class="form-group">
                                 <label for="eMail">Email</label>
-                                <input type="email" class="form-control" id="email" placeholder="Enter email ID">
+                                <input type="email" class="form-control" id="email" placeholder="<%= cookies.user.email %>">
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                             <div class="form-group">
                                 <label for="phone">Phone</label>
-                                <input type="text" class="form-control" id="phone" placeholder="Enter phone number">
+                                <input type="text" class="form-control" id="phone" placeholder="<%= cookies.user.phone %>">
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
@@ -80,12 +74,11 @@
                     <div class="row gutters">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="text-right">
-                                <button type="button" id="submit" name="submit" class="btn btn-primary" onclick="update_Profile()">Update</button>
-                                <button type="reset" id="reset" name="submit" class="btn btn-secondary" onclick="cancel()">Cancel</button>
-                                <button type="button" id="submit" name="submit" class="btn btn-primary" onclick="signOut()">Sign-Out</button>
+                                <button type="button" id="submit" name="submit" class="btn btn-primary" ">Update</button>
                             </div>
                         </div>
                     </div>
+                
                 </div>
             </div>
         </div>

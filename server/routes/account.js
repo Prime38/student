@@ -1,10 +1,20 @@
 var express = require('express');
 var router = express.Router();
 let userController = require('../controllers/userController');
-
+let accountController=require('../controllers/accountController')
+var cookieOptions = {
+  signed: true,
+  maxAge: 3000000
+};
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('account', { title: 'Express' });
+  let cookies = req.signedCookies.cookies;
+  if(cookies.user!=null){
+    res.render("account", { cookies: cookies });
+    console.log("cookies "+cookies.user.username);
+  }else{
+    res.render('account', { cookies: cookies });
+  }
 });
 
 /* POST Route show the login page*/

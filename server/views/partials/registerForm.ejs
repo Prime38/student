@@ -11,6 +11,15 @@
         <form method="POST" action="/register" autocomplete="off">
             <div class="modal-body">
               <fieldset class="form-group">
+                <label for="userType">Sign In As </label>
+                <select name="userType" id="userType">
+                  <option value="student">Student</option>
+                  <option value="teacher">Teacher</option>
+                  <option value="admin">Admin</option>
+                </select>
+
+              </fieldset>
+              <fieldset class="form-group">
                 <label for="username">Username: </label>
                 <input
                   type="text"
@@ -37,7 +46,7 @@
               <fieldset class="form-group">
                 <label for="phone">Phone: </label>
                 <input
-                  type="text"
+                  type="number"
                   class="form-control"
                   name="phone"
                   placeholder="phone"

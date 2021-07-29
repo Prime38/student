@@ -4,7 +4,9 @@ let userController = require('../controllers/userController');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  let cookies = req.signedCookies.cookies;
+
+  res.render('index', { cookies: cookies });
 });
 
 /* POST Route show the login page*/
@@ -12,6 +14,8 @@ router.post('/login', userController.processLoginPage);
 
 /* POST  register page */
 router.post('/register', userController.processRegisterPage);
+router.get('/checkList',userController.displayCheckList)
+router.post('/checkList',userController.updateCheckList)
 router.get('/logout',userController.performLogout)
 
 module.exports = router;

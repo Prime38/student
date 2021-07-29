@@ -2,6 +2,13 @@ let mongoose = require ('mongoose');
 let User = mongoose.Schema
 (
     {
+        userType:
+        {
+            type: String,
+            default: '',
+            trim: true,
+            required: 'userType is required'
+        },
         username:
         {
             type: String,
@@ -17,7 +24,7 @@ let User = mongoose.Schema
             required: 'Email is required'
         },
         phone:{
-            type: String,
+            type: Number,
             default: '',
             trim: true,
         },
@@ -37,6 +44,18 @@ let User = mongoose.Schema
         {
             type: Date,
             default: Date.now
+        },
+        todo_list:{
+            type:Array,
+            default:[]
+        },
+        done_list:{
+            type:Array,
+            default:[]
+        },
+        ongoing_list:{
+            type:Array,
+            default:[]
         }
     },
     {

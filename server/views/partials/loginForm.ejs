@@ -12,6 +12,15 @@
       <form method="POST" action="/login" autocomplete="off">
         <div class="modal-body">
           <fieldset class="form-group">
+            <label for="userType">Login As </label>
+            <select name="userType" id="userType">
+              <option value="student">Student</option>
+              <option value="teacher">Teacher</option>
+              <option value="admin">Admin</option>
+            </select>
+
+          </fieldset>
+          <fieldset class="form-group">
             <label for="username">Username: </label>
             <input
               type="text"
