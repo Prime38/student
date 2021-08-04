@@ -8,6 +8,11 @@ router.get('/', function(req, res, next) {
 
   res.render('index', { cookies: cookies });
 });
+router.get('/grader',(req,res,next)=>{
+  let cookies = req.signedCookies.cookies;
+
+  res.render('grader', { cookies: cookies });
+})
 
 /* POST Route show the login page*/
 router.post('/login', userController.processLoginPage);
