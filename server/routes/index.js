@@ -13,9 +13,8 @@ router.get('/', function(req, res, next) {
 router.post('/login', userController.processLoginPage);
 
 /* POST  register page */
+router.post('/updateUser', userController.updateUserInfo);
 router.post('/register', userController.processRegisterPage);
-router.get('/checkList',userController.displayCheckList)
-router.post('/checkList',userController.updateCheckList)
 router.get('/logout',userController.performLogout)
 
 module.exports = router;

@@ -10,18 +10,11 @@ var cookieOptions = {
 router.get('/', function(req, res, next) {
   let cookies = req.signedCookies.cookies;
   if(cookies.user!=null){
+    console.log("cookies "+cookies.user);
     res.render("account", { cookies: cookies });
-    console.log("cookies "+cookies.user.username);
   }else{
     res.render('account', { cookies: cookies });
   }
 });
-
-/* POST Route show the login page*/
-router.post('/login', userController.processLoginPage);
-
-/* POST  register page */
-router.post('/register', userController.processRegisterPage);
-router.get('/logout',userController.performLogout)
 
 module.exports = router;

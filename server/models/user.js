@@ -9,6 +9,13 @@ let User = mongoose.Schema
             trim: true,
             required: 'userType is required'
         },
+        userId:
+        {
+            type: String,
+            default: '',
+            trim: true,
+            required: 'userId is required'
+        },
         username:
         {
             type: String,

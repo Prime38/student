@@ -1,35 +1,32 @@
 
-<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgb(42, 143, 238);">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
 
-    <a class="navbar-brand" href="#">
-      <img src="/Assets/images/logo.png" width="80" alt="">
-    </a>
+    
   
-    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
-    </button> -->
+    </button>
   
     <div class="d-flex justify-content-center collapse navbar-collapse row" id="navbarSupportedContent" style="background-color: transparent; color:black" >
       <div class="col-4 " >
-        <a class="btn btn-primary" href="">Home </a>
-        <a class="btn btn-primary" href="">Profile </a>
-        <a class="btn btn-primary" href="/checklist">Checklist </a>
-        <a class="btn btn-primary" href="/grader">Grader </a>
+        <a class="btn btn-success" href="/">Home </a>
+        <a class="btn btn-success" href="/account">Profile </a>
+        <a class="btn btn-success" href="/checklist">Checklist </a>
+        <a class="btn btn-success" href="/grader">Grader </a>
       </div>
-      <div class="col-4 text-light sty" style="background-color: transparent; color:black">
-        <h2 class="lead" style="background-color: transparent; color:black ;text-align: center;">Provide Title Here</h2>
+      <div class="col-4 text-light" >
       </div>
       <% if(cookies !=null && cookies.user!=null){ %>
         <div class="col-4 d-flex justify-content-end">
-          <button type="button" class="btn btn-primary" style="margin-right: 4px;">Hello <%= cookies.user.username %> </button>
-          <button type="button" class="btn btn-secondary" onclick="location.href = '/logout';">Logout</button>
+          <button type="button" class="btn btn-success" style ="margin-right: 4px;" onclick="location.href = '/account';">Hello <%= cookies.user.username %> </button>
+          <button type="button" class="btn btn-success"  onclick="location.href = '/logout';">Logout</button>
       </div>
         <% }else{ %>
       <div class="col-4 d-flex justify-content-end">
         
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal" >Login</button>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#registrationModal">Sign In</button>
+        <button type="button " style ="margin-right: 4px;" class="btn btn-success" data-toggle="modal" data-target="#loginModal" >Login</button>
+        <button type="button"  class="btn btn-success" data-toggle="modal" data-target="#registrationModal">Sign In</button>
       </div>
       <% } %>
     </div>
