@@ -63,6 +63,10 @@ let User = mongoose.Schema
         ongoing_list:{
             type:Array,
             default:[]
+        },
+        events:{
+            type:Array,
+            default:[]
         }
     },
     {
